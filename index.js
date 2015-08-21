@@ -178,7 +178,7 @@ module.exports = function (str, opts) {
     out.setHours(res.hours === undefined ? 0 : res.hours);
     out.setMinutes(res.minutes === undefined ? 0 : res.minutes);
     out.setSeconds(res.seconds === undefined ? 0 : res.seconds);
-    if (res.date) out.setDate(res.date);
+    if (res.date !== undefined) out.setDate(res.date);
     
     if (typeof res.month === 'number') {
         out.setMonth(res.month);

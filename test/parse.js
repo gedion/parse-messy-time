@@ -177,5 +177,10 @@ test('parse dates', function (t) {
         '2015-04-14 09:46:01',
         'now'
     );
+    t.equal(
+        strftime('%F %T', parse('14 days ago', optsd)),
+        '2015-03-31 09:46:01',
+        '14 days ago'
+    );
     t.end();
 });
