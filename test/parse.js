@@ -182,5 +182,20 @@ test('parse dates', function (t) {
         '2015-03-31 09:46:01',
         '14 days ago'
     );
+    t.equal(
+        strftime('%F %T', parse('2015-10-31', optsd)),
+        '2015-10-31 00:00:00',
+        'YYYY-MM-DD'
+    );
+    t.equal(
+        strftime('%F %T', parse('2015-10-31 20:30', optsd)),
+        '2015-10-31 20:30:00',
+        'YYYY-MM-DD HH:MM'
+    );
+    t.equal(
+        strftime('%F %T', parse('2015-10-31 10:30pm', optsd)),
+        '2015-10-31 20:30:00',
+        'YYYY-MM-DD informal'
+    );
     t.end();
 });
