@@ -98,6 +98,12 @@ module.exports = function (str, opts) {
         else if (m = /^[`'\u00b4\u2019](\d+)/.exec(t)) {
             res.year = Number(m[1]);
         }
+        else if (/^\d{4}[\W_]\d{1,2}[\W_]\d{1,2}/.test(t)) {
+            var yms = t.split(/[\W_]/);
+            res.year = Number(yms[0]);
+            res.month = Number(yms[1]) - 1;
+            res.date = Number(yms[2]);
+        }
         else if (m = /^(\d+)/.exec(t)) {
             var x = Number(m[1]);
             if (res.hours === undefined && x < 24) res.hours = x;
@@ -178,13 +184,12 @@ module.exports = function (str, opts) {
     out.setHours(res.hours === undefined ? 0 : res.hours);
     out.setMinutes(res.minutes === undefined ? 0 : res.minutes);
     out.setSeconds(res.seconds === undefined ? 0 : res.seconds);
-    if (res.date !== undefined) out.setDate(res.date);
-    
     if (typeof res.month === 'number') {
         out.setMonth(res.month);
     }
     else if (res.month) out.setMonth(months.indexOf(res.month));
-    
+    if (res.date !== undefined) out.setDate(res.date);
+     
     if (res.year) out.setYear(res.year);
     return out;
     

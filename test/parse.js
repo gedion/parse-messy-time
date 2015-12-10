@@ -193,7 +193,7 @@ test('parse dates', function (t) {
         'YYYY-MM-DD HH:MM'
     );
     t.equal(
-        strftime('%F %T', parse('2015-10-31 10:30pm', optsd)),
+        strftime('%F %T', parse('2015-10-31 8:30pm', optsd)),
         '2015-10-31 20:30:00',
         'YYYY-MM-DD informal'
     );
