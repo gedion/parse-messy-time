@@ -307,6 +307,7 @@ function nday (s) {
 function parseh (s, next) {
     var m = /(\d+\.?\d*)(?:[:h](\d+\.?\d*)(?:[:m](\d+\.?\d*s?\.?\d*))?)?/.exec(s);
     var hms = [ Number(m[1]), null, null ];
+    if (/^am/.test(next) && hms[0] == 12) hms[0] -= 12;
     if (/^pm/.test(next) && hms[0] < 12) hms[0] += 12;
     if (m[2]) hms[1] = Number(m[2]);
     if (m[3]) hms[2] = Number(m[3]);

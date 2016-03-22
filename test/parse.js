@@ -11,6 +11,7 @@ test('parse dates', function (t) {
     
     t.equal(strftime('%T', parse('11am')), '11:00:00');
     t.equal(strftime('%T', parse('11pm')), '23:00:00');
+    t.equal(strftime('%T', parse('12:30am')), '00:30:00');
     t.equal(strftime('%T', parse('12:30pm')), '12:30:00');
     t.equal(
         strftime('%F %T', parse('tomorrow at 7')),
