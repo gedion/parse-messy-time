@@ -198,5 +198,10 @@ test('parse dates', function (t) {
         '2015-10-31 20:30:00',
         'YYYY-MM-DD informal'
     );
+    t.equal(
+        strftime('%F', parse('sunday may 22nd', optsd)),
+        '2015-05-22',
+        'sunday may 22nd'
+    );
     t.end();
 });
