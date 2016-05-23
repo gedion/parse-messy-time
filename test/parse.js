@@ -203,5 +203,10 @@ test('parse dates', function (t) {
         '2015-05-22',
         'sunday may 22nd'
     );
+    t.equal(
+        strftime('%F', parse('sunday may 22nd 2016', optsd)),
+        '2016-05-22',
+        'sunday may 22nd 2016'
+    );
     t.end();
 });
