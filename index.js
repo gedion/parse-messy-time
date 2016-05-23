@@ -27,6 +27,7 @@ module.exports = function (str, opts) {
         var m;
         
         if (m = /(\d+)(st|nd|rd|th)/i.exec(t)) {
+            console.log('t=', t)
             if (next === 'of') {
                 next = tokens[i+2];
                 i++;
@@ -34,6 +35,17 @@ module.exports = function (str, opts) {
             res.date = Number(m[1]);
             if (monthish(next)) {
                 res.month = next;
+                i++;
+            }
+        }
+        else if ((m = /(\d+)(st|nd|rd|th)?/i.exec(next))
+        && monthish(t)) {
+            res.month = t;
+            res.date = Number(m[1]);
+            i++;
+            if (/^\d+$/.test(tokens[i+1])) { // year
+                res.year = Number(tokens[i+1]);
+                i++;
             }
         }
         else if ((m = hmsre.exec(t)) && isunit(next)) {
