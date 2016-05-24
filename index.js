@@ -18,6 +18,7 @@ var tokre = RegExp(
 module.exports = function (str, opts) {
     if (!opts) opts = {};
     var now = opts.now || new Date;
+    if (typeof now === 'number' || typeof now === 'string') now = new Date(now);
     var ago = false;
     var tokens = str.split(tokre).filter(Boolean).map(lc);
     var res = {};
@@ -28,7 +29,6 @@ module.exports = function (str, opts) {
         var m;
         
         if (m = /(\d+)(st|nd|rd|th)/i.exec(t)) {
-            console.log('t=', t)
             if (next === 'of') {
                 next = tokens[i+2];
                 i++;
@@ -207,8 +207,8 @@ module.exports = function (str, opts) {
     if (res.date !== undefined) out.setDate(res.date);
      
     if (res.year) out.setYear(res.year);
-    else if (out < now && !ago) {
-        out.setYear(out.getFullYear() + 1);
+    else if (out < now && !ago && (out.getMonth() !== now.getMonth())) {
+        out.setYear(now.getFullYear() + 1);
     }
     return out;
     

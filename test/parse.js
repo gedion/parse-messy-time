@@ -213,5 +213,10 @@ test('parse dates', function (t) {
         '2016-01-15',
         'jan 15'
     );
+    t.equal(
+        strftime('%F', parse('apr 1', optsd)),
+        '2015-04-01',
+        'apr 1'
+    );
     t.end();
 });
