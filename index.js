@@ -18,6 +18,7 @@ var tokre = RegExp(
 module.exports = function (str, opts) {
     if (!opts) opts = {};
     var now = opts.now || new Date;
+    var ago = false;
     var tokens = str.split(tokre).filter(Boolean).map(lc);
     var res = {};
     for (var i = 0; i < tokens.length; i++) {
@@ -66,7 +67,10 @@ module.exports = function (str, opts) {
             }
             else {
                 for (var j = i + 2; j < tokens.length; j++) {
-                    if (tokens[j] === 'ago') break;
+                    if (tokens[j] === 'ago') {
+                        ago = true;
+                        break;
+                    }
                 }
                 if (j === tokens.length) continue;
                 
@@ -203,6 +207,9 @@ module.exports = function (str, opts) {
     if (res.date !== undefined) out.setDate(res.date);
      
     if (res.year) out.setYear(res.year);
+    else if (out < now && !ago) {
+        out.setYear(out.getFullYear() + 1);
+    }
     return out;
     
     function setFromDay (t, x) {
