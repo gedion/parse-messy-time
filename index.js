@@ -207,7 +207,8 @@ module.exports = function (str, opts) {
     if (res.date !== undefined) out.setDate(res.date);
      
     if (res.year) out.setYear(res.year);
-    else if (out < now && !ago && (out.getMonth() !== now.getMonth())) {
+    else if (out < now && !ago
+    && (Math.abs(out.getMonth()+12 -now.getMonth()) % 12) >= 1) {
         out.setYear(now.getFullYear() + 1);
     }
     return out;
