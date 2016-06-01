@@ -218,5 +218,12 @@ test('parse dates', function (t) {
         '2015-04-01',
         'apr 1'
     );
+    t.equal(
+        strftime('%F', parse('this sunday', {
+            now: new Date('2016-05-31 00:00')
+        })),
+        '2016-06-05',
+        'this sunday'
+    );
     t.end();
 });
