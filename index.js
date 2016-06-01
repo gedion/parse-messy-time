@@ -200,11 +200,18 @@ module.exports = function (str, opts) {
     out.setHours(res.hours === undefined ? 0 : res.hours);
     out.setMinutes(res.minutes === undefined ? 0 : res.minutes);
     out.setSeconds(res.seconds === undefined ? 0 : res.seconds);
+    var monthSet = res.month;
     if (typeof res.month === 'number') {
-        out.setMonth(res.month);
+        out.setMonth(res.month)
     }
-    else if (res.month) out.setMonth(months.indexOf(res.month));
+    else if (res.month) {
+        monthSet = months.indexOf(res.month);
+        out.setMonth(monthSet);
+    }
     if (res.date !== undefined) out.setDate(res.date);
+    if (monthSet !== undefined && out.getMonth() !== monthSet) {
+        out.setMonth(monthSet);
+    }
      
     if (res.year) out.setYear(res.year);
     else if (out < now && !ago
