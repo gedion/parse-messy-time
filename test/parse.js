@@ -225,5 +225,30 @@ test('parse dates', function (t) {
         '2016-06-05',
         'this sunday'
     );
+    t.equal(
+        strftime('%F', parse('the 1st', optsd)),
+        '2015-04-01',
+        'the 1st'
+    );
+    t.equal(
+        strftime('%F', parse('the 2nd', optsd)),
+        '2015-04-02',
+        'the 2nd'
+    );
+    t.equal(
+        strftime('%F', parse('the 3rd', optsd)),
+        '2015-04-03',
+        'the 3rd'
+    );
+    t.equal(
+        strftime('%F', parse('the 4th', optsd)),
+        '2015-04-04',
+        'the 4th'
+    );
+    t.equal(
+        strftime('%F', parse('the 10th', optsd)),
+        '2015-04-10',
+        'the 10th'
+    );
     t.end();
 });
