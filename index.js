@@ -86,6 +86,16 @@ module.exports = function (str, opts) {
                 i = j;
             }
         }
+        else if (/noon/.test(t)) {
+          res.hours = 12
+          res.minutes = 0
+          res.seconds = 0
+        }
+        else if (/midnight/.test(t)) {
+          res.hours = 0
+          res.minutes = 0
+          res.seconds = 0
+        }
         else if (/\d+[:h]\d+/.test(t) || /^(am|pm)/.test(next)) {
             var hms = parseh(t, next);
             if (hms[0] !== null) res.hours = hms[0];
