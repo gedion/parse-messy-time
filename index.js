@@ -195,7 +195,6 @@ module.exports = function (str, opts) {
     if (res.month && typeof res.month !== 'number') {
         res.month = nmonth(res.month);
     }
-    
     var out = new Date(now);
     out.setHours(res.hours === undefined ? 0 : res.hours);
     out.setMinutes(res.minutes === undefined ? 0 : res.minutes);
