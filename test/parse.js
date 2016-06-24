@@ -250,5 +250,15 @@ test('parse dates', function (t) {
         '2015-04-10',
         'the 10th'
     );
+    t.equal(
+        strftime('%F %T', parse('tomorrow at noon', optsd)),
+        '2015-04-15 12:00:00',
+        'tomorrow at noon'
+    );
+    t.equal(
+        strftime('%F %T', parse('in 6 days at midnight', optsd)),
+        '2015-04-20 00:00:00',
+        'in 6 days at midnight'
+    );
     t.end();
 });
