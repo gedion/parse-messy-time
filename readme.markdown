@@ -2,6 +2,8 @@
 
 parse messy human date and time strings
 
+[![build status](https://travis-ci.org/substack/parse-messy-time.svg)](https://travis-ci.org/substack/parse-messy-time)
+
 # example
 
 ```
