@@ -9,6 +9,7 @@ var days = [
 var hmsre = RegExp(
     '(\\d+\\.?\\d*(?:[:h]\\d+\\.?\\d*(?:[:m]\\d+\\.\\d*s?)?)?)'
 );
+
 var tokre = RegExp(
     '\\s+|(\\d+(?:st|th|nd|rd|th))\\b'
     + '|' + hmsre.source + '([A-Za-z]+)'
